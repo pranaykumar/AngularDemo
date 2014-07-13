@@ -3,24 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <title>Hello World with Module</title>
+<link rel="stylesheet" type="text/css" href="common.css">
 </head>
 <body></body>
 <div ng-controller='TextController'>
-<p>{{someText.message}}</p>
+	<p>{{someText.message}}</p>
 </div>
 <fieldset>
-<legend>StartUp Seed Money Calculator</legend>
-<form ng-controller='StartUpController'>
-Starting: <input ng-model='funding.startingEstimate'>
-Recommendation: {{funding.needed}}<br><br>
-<button ng-click="requestFunding()">Fund My StartUp!</button>
-<input type="button" ng-click="reset()" value="Reset">
-</form>
+	<legend>StartUp Seed Money Calculator - ng-watch illustration</legend>
+	<form ng-controller='StartUpController'>
+		Starting: <input ng-model='funding.startingEstimate'>
+		Recommendation: {{funding.needed}}<br> <br>
+		<button ng-click="requestFunding()">Fund My StartUp!</button>
+		<input type="button" ng-click="reset()" value="Reset">
+	</form>
+</fieldset>
+<fieldset ng-controller='StudentListController'>
+	<legend>Students - ng-repeat illustration</legend>
+	<input type="text" ng-model="newStudent">
+	<button ng-click="addStudent()">Add Student</button>
+	<ul>
+		<li ng-repeat="student in students">{{$index+1}} -
+			{{student.name}}</li>
+	</ul>
+	<!-- same list as above using table element -->
+	<table>
+		<tr ng-repeat="student in students">
+			<td>{{$index+1}}</td>
+			<td>{{student.name}}</td>
+			<td>{{student.id}}</td>
+		</tr>
+	</table>
+</fieldset>
+<fieldset ng-controller='ToggleMenuController'>
+	<legend>
+		Toggle Menu - Illustrates show/hide using <strong>ng-show</strong>
+		directive
+	</legend>
+	<button ng-click="toggleMenu()">{{menuState.btnTxt}}</button>
+	<ul ng-show='menuState.show'>
+		<li>MENU ITEM A</li>
+		<li>MENU ITEM B</li>
+		<li>MENU ITEM C</li>
+
+	</ul>
+</fieldset>
+<fieldset ng-controller="ErrorWarningController">
+	<legend>Error and Warning - ng-class and ng-style illustration</legend>
+	<p ng-class='{error:isError, warning:isWarning}' ng-style="commonStyle">{{messageText}}</p>
+	<button ng-click="showError()">Show Error</button>
+	<button ng-click="showWarning()">Show Warning</button>
+</fieldset>
+<fieldset ng-controller="RestaurantController">
+	<legend>Restaurant Directory - ng-class and ng-style
+		illustration</legend>
+	<table>
+	<thead><tr><th>NAME</th><th>CUSINE</th><th>RATING</th></tr></thead>
+	<tr ng-repeat="restaurant in directory" ng-click="selectRestaurant($index)" ng-class="{selected: $index==selectedRow}">
+		<td>{{restaurant.name}}</td>
+		<td>{{restaurant.cuisine}}</td>
+		<td>{{restaurant.rating}}</td>
+	</tr>
+	</table>
 </fieldset>
 <br>
-	<a href="index0.html">INDEX</a>
+<a href="index0.html">INDEX</a>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
 <script src="controllers_in_modules.js"></script>
+
 </body>
 </html>
