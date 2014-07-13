@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+<head>
+<meta charset="UTF-8">
+<title>Hello World with Module</title>
+</head>
+<body></body>
+<div ng-controller='TextController'>
+<p>{{someText.message}}</p>
+</div>
+<fieldset>
+<legend>StartUp Seed Money Calculator</legend>
+<form ng-controller='StartUpController'>
+Starting: <input ng-model='funding.startingEstimate'>
+Recommendation: {{funding.needed}}<br><br>
+<button ng-click="requestFunding()">Fund My StartUp!</button>
+<input type="button" ng-click="reset()" value="Reset">
+</form>
+</fieldset>
+<br>
+	<a href="index0.html">INDEX</a>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+<script src="controllers_in_modules.js"></script>
+</body>
+</html>

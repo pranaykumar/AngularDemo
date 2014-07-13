@@ -8,7 +8,16 @@
 <body>
 	<div ng-controller='HelloController'>
 	<input ng-model="greeting.text">
-		<p>{{greeting.text}}, World</p>
+		<p>{{greeting.text}}, World</p><br>
+		<span ng-bind='greeting.text'></span> , World using ng-bind<!-- Attribute based data binding using ng-bind directive -->
 	</div>
+	<div ng-controller='TextController'>
+	<p>{{someText}}</p><br>
+	<p>{{messages.someOtherText}}</p>
+	TEST CHECKBOX - <input type="checkbox" ng-model='messages.youCheckedIt' ng-change='showCheckedStatus()'>
+	
+	</div>
+	<br>
+		<a href="index0.html">INDEX</a>
 </body>
 </html>
