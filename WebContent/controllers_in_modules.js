@@ -114,8 +114,8 @@ appModule.controller('RestaurantController', function($scope) {
 		cuisine : 'Continental',
 		rating : '4'
 	} ];
-		
+
 	$scope.selectRestaurant = function(row) {
-	$scope.selectedRow = row;
+		$scope.selectedRow = row;
 	}
 });

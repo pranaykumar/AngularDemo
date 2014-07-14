@@ -9,6 +9,17 @@
 			| currency}}</span> <span>{{item.price * item.quantity | currency}}</span>
 		<button ng-click='remove($index)'>Remove</button>
 	</div>
+	<div>
+		<p>
+			<span>TOTAL : </span><span>{{bill.totalCart}}</span>
+		</p>
+		<p>
+			<span>DISCOUNT : </span><span>{{bill.discount}}</span>
+		</p>
+		<p>
+			<span>FINAL : </span><span>{{bill.subtotal}}</span>
+		</p>
+	</div>
 	<br>
 	<a href="index0.html">INDEX</a>
 	<script

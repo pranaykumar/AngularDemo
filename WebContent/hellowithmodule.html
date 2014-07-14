@@ -45,7 +45,6 @@
 		<li>MENU ITEM A</li>
 		<li>MENU ITEM B</li>
 		<li>MENU ITEM C</li>
-
 	</ul>
 </fieldset>
 <fieldset ng-controller="ErrorWarningController">
@@ -58,12 +57,20 @@
 	<legend>Restaurant Directory - ng-class and ng-style
 		illustration</legend>
 	<table>
-	<thead><tr><th>NAME</th><th>CUSINE</th><th>RATING</th></tr></thead>
-	<tr ng-repeat="restaurant in directory" ng-click="selectRestaurant($index)" ng-class="{selected: $index==selectedRow}">
-		<td>{{restaurant.name}}</td>
-		<td>{{restaurant.cuisine}}</td>
-		<td>{{restaurant.rating}}</td>
-	</tr>
+		<thead>
+			<tr>
+				<th>NAME</th>
+				<th>CUSINE</th>
+				<th>RATING</th>
+			</tr>
+		</thead>
+		<tr ng-repeat="restaurant in directory"
+			ng-click="selectRestaurant($index)"
+			ng-class="{selected: $index==selectedRow}">
+			<td>{{restaurant.name}}</td>
+			<td>{{restaurant.cuisine}}</td>
+			<td>{{restaurant.rating}}</td>
+		</tr>
 	</table>
 </fieldset>
 <br>
