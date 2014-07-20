@@ -11,13 +11,13 @@
 	</div>
 	<div>
 		<p>
-			<span>TOTALBill :</span><span>{{bill.totalCart}}</span>
+			<span>TOTAL : $</span><span>{{bill.totalCart | number:2}}</span>
 		</p>
 		<p>
-			<span>DISCOUNT : </span><span>{{bill.discount}}</span>
+			<span>DISCOUNT : </span><span>{{bill.discount}}%</span>
 		</p>
 		<p>
-			<span>FINAL : </span><span>{{bill.subtotal}}</span>
+			<span>FINAL : $</span><span>{{bill.subtotal  | number:2}}</span>
 		</p>
 	</div>
 	<br>

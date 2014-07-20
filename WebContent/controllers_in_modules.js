@@ -72,6 +72,17 @@ appModule.controller('ToggleMenuController', function($scope) {
 	}
 });
 
+appModule.filter('titleCase', function() {
+	var titleCaseFilter = function(input) {
+		var words = input.split(' ');
+		for (var i = 0; i < words.length; i++) {
+			words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+		}
+		return words.join(' ');
+	};
+	return titleCaseFilter;
+});
+
 appModule
 		.controller(
 				'ErrorWarningController',
@@ -90,30 +101,43 @@ appModule
 					$scope.showError = function() {
 						$scope.isError = true;
 						$scope.isWarning = false;
-						$scope.messageText = 'This is and Error Message!!!';
+						$scope.messageText = 'This is an error message!!!';
 					};
 
 					$scope.showWarning = function() {
 						$scope.isError = false;
 						$scope.isWarning = true;
-						$scope.messageText = 'This is just a Warning Message. You can carry on!';
+						$scope.messageText = 'This is just a warning message. You can carry on!';
 					};
 
 				});
-appModule.controller('RestaurantController', function($scope) {
-	$scope.directory = [ {
-		name : 'McDonalds',
-		cuisine : 'Fast Food',
-		rating : '4'
-	}, {
-		name : 'Red Lobster',
-		cuisine : 'Sea Food',
-		rating : '5'
-	}, {
-		name : 'Panda Express',
-		cuisine : 'Continental',
-		rating : '4'
-	} ];
+
+// Set up a service factory to create Directory service interface. This will
+// ideally call an API or pull data from database
+appModule.factory('Directory', function() {
+	var directory = {};
+	directory.query = function() {
+		return [ {
+			name : 'McDonalds',
+			cuisine : 'Fast Food',
+			rating : '4'
+		}, {
+			name : 'Red Lobster',
+			cuisine : 'Sea Food',
+			rating : '5'
+		}, {
+			name : 'Panda Express',
+			cuisine : 'Continental',
+			rating : '4'
+		} ];
+	};
+	return directory;
+});
+
+// Restaurant controller looks for Directory service using parameter name
+// matching in the same module.
+appModule.controller('RestaurantController', function($scope, Directory) {
+	$scope.directory = Directory.query();
 
 	$scope.selectRestaurant = function(row) {
 		$scope.selectedRow = row;

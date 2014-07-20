@@ -48,8 +48,8 @@
 	</ul>
 </fieldset>
 <fieldset ng-controller="ErrorWarningController">
-	<legend>Error and Warning - ng-class and ng-style illustration</legend>
-	<p ng-class='{error:isError, warning:isWarning}' ng-style="commonStyle">{{messageText}}</p>
+	<legend>Error and Warning - ng-class and ng-style illustration. Custom filter illustration</legend>
+	<p ng-class='{error:isError, warning:isWarning}' ng-style="commonStyle">{{messageText | titleCase}}</p>
 	<button ng-click="showError()">Show Error</button>
 	<button ng-click="showWarning()">Show Warning</button>
 </fieldset>
