@@ -10,7 +10,8 @@ appModule.controller('TextController', function($scope) {
 });
 
 // register StartUpController
-appModule.controller('StartUpController', function($scope) {
+// using the declared form of dependency injection (array-style injection)
+appModule.controller('StartUpController', ['$scope',function($scope) {
 	$scope.funding = {
 		startingEstimate : 0
 	};
@@ -28,7 +29,7 @@ appModule.controller('StartUpController', function($scope) {
 	$scope.reset = function() {
 		$scope.funding.startingEstimate = 0;
 	}
-});
+}]);
 
 appModule.controller('StudentListController', function($scope) {
 	var students = [ {
@@ -142,4 +143,12 @@ appModule.controller('RestaurantController', function($scope, Directory) {
 	$scope.selectRestaurant = function(row) {
 		$scope.selectedRow = row;
 	}
+});
+
+// form validation controller
+appModule.controller('AddUserController', function($scope) {
+	$scope.message = '';
+	$scope.addUser = function() {
+		$scope.message = 'Thanks, ' + $scope.user.first + ', we added you!';
+	};
 });
